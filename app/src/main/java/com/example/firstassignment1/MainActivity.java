@@ -16,10 +16,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-Spinner spinner;
-Button run;
-Button calculate;
-LinearLayout linearShow;
+    Spinner spinner;
+    Button run;
+    Button calculate;
+    LinearLayout linearShow;
     RadioGroup groupPick;
 
 
@@ -39,49 +39,47 @@ LinearLayout linearShow;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-spinner=findViewById(R.id.spinner);
-run=findViewById(R.id.run);
-linearShow=findViewById(R.id.linearshow);
-groupPick=findViewById(R.id.grouppick);
-text=findViewById(R.id.text);
-text1=findViewById(R.id.length);
-text2=findViewById(R.id.width);
-text3=findViewById(R.id.height);
-edittext1=findViewById(R.id.editlength);
-edittext2=findViewById(R.id.editwidth);
-edittext3=findViewById(R.id.editheight);
-editresult=findViewById(R.id.editresult);
-calculate=findViewById(R.id.calculate);
-multdetails=findViewById(R.id.multidetails);
+        spinner = findViewById(R.id.spinner);
+        run = findViewById(R.id.run);
+        linearShow = findViewById(R.id.linearshow);
+        groupPick = findViewById(R.id.grouppick);
+        text = findViewById(R.id.text);
+        text1 = findViewById(R.id.length);
+        text2 = findViewById(R.id.width);
+        text3 = findViewById(R.id.height);
+        edittext1 = findViewById(R.id.editlength);
+        edittext2 = findViewById(R.id.editwidth);
+        edittext3 = findViewById(R.id.editheight);
+        editresult = findViewById(R.id.editresult);
+        calculate = findViewById(R.id.calculate);
+        multdetails = findViewById(R.id.multidetails);
 
 
-
-
-        String[] types= {"Circle","Rectangle","Square","Triangle"};
-        ArrayAdapter<String> adapter=new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,types); //this is dynamic not staticly
+        String[] types = {"Circle", "Rectangle", "Square", "Triangle"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, types); //this is dynamic not staticly
 
         spinner.setAdapter(adapter);
         multdetails.setOnTouchListener(new View.OnTouchListener() {
-    @Override
-    public boolean onTouch(View view, MotionEvent motionEvent) {
-        if(view.getId()==R.id.multidetails){
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if (view.getId() == R.id.multidetails) {
 
-            view.getParent().requestDisallowInterceptTouchEvent(true);
+                    view.getParent().requestDisallowInterceptTouchEvent(true);
 
 
-            switch (motionEvent.getAction() & MotionEvent.ACTION_MASK){
+                    switch (motionEvent.getAction() & MotionEvent.ACTION_MASK) {
 
-                case MotionEvent.ACTION_UP: view.getParent().requestDisallowInterceptTouchEvent(false);
-                    break;
+                        case MotionEvent.ACTION_UP:
+                            view.getParent().requestDisallowInterceptTouchEvent(false);
+                            break;
+                    }
+                }
+
+
+                return false;
+
             }
-        }
-
-
-
-        return false;
-
-    }
-});
+        });
 
 
         run.setOnClickListener(new View.OnClickListener() {
@@ -91,11 +89,11 @@ multdetails=findViewById(R.id.multidetails);
                 edittext1.setText("");
                 edittext2.setText("");
                 edittext3.setText("");
-editresult.setText("");
-multdetails.setText("");
-                int radioId=groupPick.getCheckedRadioButtonId();
-                radioButton=findViewById(radioId);
-                if(radioButton.getText().toString().equals("Area") && spinner.getSelectedItem().equals("Circle")) {
+                editresult.setText("");
+                multdetails.setText("");
+                int radioId = groupPick.getCheckedRadioButtonId();
+                radioButton = findViewById(radioId);
+                if (radioButton.getText().toString().equals("Area") && spinner.getSelectedItem().equals("Circle")) {
                     linearShow.setVisibility(View.VISIBLE);
                     multdetails.requestFocus();
                     multdetails.setFocusable(View.NOT_FOCUSABLE);
@@ -109,26 +107,24 @@ multdetails.setText("");
                     multdetails.requestFocus();
 
 
-                }
-                    else if(radioButton.getText().toString().equals("Area") && spinner.getSelectedItem().equals("Rectangle")) {
+                } else if (radioButton.getText().toString().equals("Area") && spinner.getSelectedItem().equals("Rectangle")) {
                     linearShow.setVisibility(View.VISIBLE);
                     multdetails.requestFocus();
                     multdetails.setFocusable(View.NOT_FOCUSABLE);
-                        text.setText("Area of a rectangle");
-                        text1.setText("Length");
-                        edittext1.setHint("Enter the length :");
-                        text2.setVisibility(View.VISIBLE);
+                    text.setText("Area of a rectangle");
+                    text1.setText("Length");
+                    edittext1.setHint("Enter the length :");
+                    text2.setVisibility(View.VISIBLE);
                     edittext2.setVisibility(View.VISIBLE);
 
-                    text2.setText("weight");
-                        edittext2.setHint("Enter the weight :");
+                    text2.setText("width");
+                    edittext2.setHint("Enter the width :");
 
-                        text3.setVisibility(View.GONE);
-                        edittext3.setVisibility(View.GONE);
+                    text3.setVisibility(View.GONE);
+                    edittext3.setVisibility(View.GONE);
                     multdetails.requestFocus();
 
-                    }
-                else if(radioButton.getText().toString().equals("Area") && spinner.getSelectedItem().equals("Square")) {
+                } else if (radioButton.getText().toString().equals("Area") && spinner.getSelectedItem().equals("Square")) {
                     linearShow.setVisibility(View.VISIBLE);
                     multdetails.requestFocus();
                     multdetails.setFocusable(View.NOT_FOCUSABLE);
@@ -141,8 +137,7 @@ multdetails.setText("");
                     edittext3.setVisibility(View.GONE);
                     multdetails.requestFocus();
 
-                }
-                else if(radioButton.getText().toString().equals("Area") && spinner.getSelectedItem().equals("Triangle")) {
+                } else if (radioButton.getText().toString().equals("Area") && spinner.getSelectedItem().equals("Triangle")) {
 
                     linearShow.setVisibility(View.VISIBLE);
                     multdetails.requestFocus();
@@ -159,10 +154,7 @@ multdetails.setText("");
                     edittext3.setVisibility(View.GONE);
                     multdetails.requestFocus();
 
-                }
-
-
-                 else if (radioButton.getText().toString().equals("Circumference")  && spinner.getSelectedItem().equals("Circle")) {
+                } else if (radioButton.getText().toString().equals("Perimeter") && spinner.getSelectedItem().equals("Circle")) {
                     linearShow.setVisibility(View.VISIBLE);
                     multdetails.requestFocus();
                     multdetails.setFocusable(View.NOT_FOCUSABLE);
@@ -175,8 +167,7 @@ multdetails.setText("");
                     edittext3.setVisibility(View.GONE);
                     multdetails.requestFocus();
 
-                }
-                else if(radioButton.getText().toString().equals("Circumference") && spinner.getSelectedItem().equals("Rectangle")) {
+                } else if (radioButton.getText().toString().equals("Perimeter") && spinner.getSelectedItem().equals("Rectangle")) {
                     linearShow.setVisibility(View.VISIBLE);
                     multdetails.requestFocus();
                     multdetails.setFocusable(View.NOT_FOCUSABLE);
@@ -186,20 +177,19 @@ multdetails.setText("");
                     text2.setVisibility(View.VISIBLE);
                     edittext2.setVisibility(View.VISIBLE);
 
-                    text2.setText("weight");
-                    edittext2.setHint("Enter the weight :");
+                    text2.setText("width");
+                    edittext2.setHint("Enter the width :");
 
                     text3.setVisibility(View.GONE);
                     edittext3.setVisibility(View.GONE);
                     multdetails.requestFocus();
 
 
-                }
-                else if(radioButton.getText().toString().equals("Circumference") && spinner.getSelectedItem().equals("Square")) {
+                } else if (radioButton.getText().toString().equals("Perimeter") && spinner.getSelectedItem().equals("Square")) {
                     linearShow.setVisibility(View.VISIBLE);
                     multdetails.requestFocus();
                     multdetails.setFocusable(View.NOT_FOCUSABLE);
-                    text.setText("Circumference of a square");
+                    text.setText("Perimeter of a square");
                     text1.setText("length");
                     edittext1.setHint("Enter the length :");
                     text2.setVisibility(View.GONE);
@@ -209,19 +199,18 @@ multdetails.setText("");
                     multdetails.requestFocus();
 
 
-                }
-                else if(radioButton.getText().toString().equals("Circumference") && spinner.getSelectedItem().equals("Triangle")) {
+                } else if (radioButton.getText().toString().equals("Perimeter") && spinner.getSelectedItem().equals("Triangle")) {
 
                     linearShow.setVisibility(View.VISIBLE);
                     multdetails.requestFocus();
                     multdetails.setFocusable(View.NOT_FOCUSABLE);
-                    text.setText("Circumference of a triangle");
+                    text.setText("Perimeter of a triangle");
                     text1.setText("Length");
                     edittext1.setHint("Enter the length :");
                     text2.setVisibility(View.VISIBLE);
                     edittext2.setVisibility(View.VISIBLE);
-                    text2.setText("weight");
-                    edittext2.setHint("Enter the weight :");
+                    text2.setText("width");
+                    edittext2.setHint("Enter the width :");
                     text2.setVisibility(View.VISIBLE);
                     edittext2.setVisibility(View.VISIBLE);
                     text3.setVisibility(View.VISIBLE);
@@ -238,144 +227,206 @@ multdetails.setText("");
 
 
         calculate.setOnClickListener(new View.OnClickListener() {
-            circle circle=new circle();
-            rectangle rectangle=new rectangle();
-            square square=new square();
-            triangle triangle=new triangle();
+
             @Override
             public void onClick(View view) {
-                int radioId=groupPick.getCheckedRadioButtonId();
-                radioButton=findViewById(radioId);
-                if(radioButton.getText().toString().equals("Area") && spinner.getSelectedItem().equals("Circle")) {
 
-                    if(edittext1.getText().toString().equals("")){
+                int radioId = groupPick.getCheckedRadioButtonId();
+                radioButton = findViewById(radioId);
+                if (radioButton.getText().toString().equals("Area") && spinner.getSelectedItem().equals("Circle")) {
+
+                    if (edittext1.getText().toString().equals("")) {
+
 
                         Toast.makeText(MainActivity.this, "Error!! the radius is empty", Toast.LENGTH_SHORT).show();
+                        edittext1.setText("");
+
+                        multdetails.setText("");
+                        editresult.setText("");
+
+                    } else {
+                        circle circle = new circle(Double.parseDouble(edittext1.getText().toString()));
+
+                        editresult.setText(String.valueOf(circle.getarea()));
+                        multdetails.setText(circle.getareadetails());
                     }
-                    else{
+                } else if (radioButton.getText().toString().equals("Area") && spinner.getSelectedItem().equals("Rectangle")) {
+                    if (edittext1.getText().toString().equals("")) {
+                        Toast.makeText(MainActivity.this, "Error!! the length is empty", Toast.LENGTH_SHORT).show();
+                        edittext1.setText("");
+                        edittext2.setText("");
+                        multdetails.setText("");
+                        editresult.setText("");
 
-                        editresult.setText(String.valueOf(circle.areaCircle(Double.parseDouble(edittext1.getText().toString()))));
-                        multdetails.setText( circle.areadetails(Double.parseDouble(edittext1.getText().toString())));
+                    } else if (edittext2.getText().toString().equals("")) {
+                        Toast.makeText(MainActivity.this, "Error!! the width is empty", Toast.LENGTH_SHORT).show();
+                        edittext1.setText("");
+                        edittext2.setText("");
+                        multdetails.setText("");
+                        editresult.setText("");
+
+                    } else if (edittext1.getText().toString().equals("") && edittext2.getText().toString().equals("")) {
+                        Toast.makeText(MainActivity.this, "Error!! the length and width is empty", Toast.LENGTH_SHORT).show();
+                        edittext1.setText("");
+                        edittext2.setText("");
+                        multdetails.setText("");
+                        editresult.setText("");
+
+                    } else {
+                        rectangle rectangle = new rectangle(Double.parseDouble(edittext1.getText().toString()), Double.parseDouble(edittext2.getText().toString()));
+
+                        editresult.setText(String.valueOf(rectangle.getarea()));
+                        multdetails.setText(rectangle.getareadetails());
+
                     }
-                }
-                else if(radioButton.getText().toString().equals("Area") && spinner.getSelectedItem().equals("Rectangle")) {
-if (edittext1.getText().toString().equals("")){
-    Toast.makeText(MainActivity.this, "Error!! the length is empty", Toast.LENGTH_SHORT).show();
 
-}
-else if(edittext2.getText().toString().equals("")){
-    Toast.makeText(MainActivity.this, "Error!! the weight is empty", Toast.LENGTH_SHORT).show();
+                } else if (radioButton.getText().toString().equals("Area") && spinner.getSelectedItem().equals("Square")) {
 
-} else if (edittext1.getText().toString().equals("") && edittext2.getText().toString().equals("")) {
-    Toast.makeText(MainActivity.this, "Error!! the length and weight is empty", Toast.LENGTH_SHORT).show();
-
-}
-else{
-    editresult.setText(String.valueOf(rectangle.areaRectangle(Double.parseDouble(edittext1.getText().toString()),Double.parseDouble(edittext2.getText().toString()))));
-    multdetails.setText( rectangle.areadetails(Double.parseDouble(edittext1.getText().toString()),Double.parseDouble(edittext2.getText().toString())));
-
-}
-
-                }
-                else if(radioButton.getText().toString().equals("Area") && spinner.getSelectedItem().equals("Square")) {
-
-                    if(edittext1.getText().toString().equals("")){
+                    if (edittext1.getText().toString().equals("")) {
 
                         Toast.makeText(MainActivity.this, "Error!! the length is empty", Toast.LENGTH_SHORT).show();
-                    }
-                    else{
+                        edittext1.setText("");
 
-                        editresult.setText(String.valueOf(square.areaSquare(Double.parseDouble(edittext1.getText().toString()))));
-                        multdetails.setText( square.areadetails(Double.parseDouble(edittext1.getText().toString())));
-                    }
-                }
-                else if(radioButton.getText().toString().equals("Area") && spinner.getSelectedItem().equals("Triangle")) {
+                        multdetails.setText("");
+                        editresult.setText("");
 
-                    if (edittext1.getText().toString().equals("")){
+                    } else {
+                        square square = new square(Double.parseDouble(edittext1.getText().toString()));
+
+                        editresult.setText(String.valueOf(square.getarea()));
+                        multdetails.setText(square.getareadetails());
+                    }
+                } else if (radioButton.getText().toString().equals("Area") && spinner.getSelectedItem().equals("Triangle")) {
+
+                    if (edittext1.getText().toString().equals("")) {
                         Toast.makeText(MainActivity.this, "Error!! the length is empty", Toast.LENGTH_SHORT).show();
+                        edittext1.setText("");
+                        edittext2.setText("");
+                        multdetails.setText("");
+                        editresult.setText("");
 
-                    }
-                    else if(edittext2.getText().toString().equals("")){
+                    } else if (edittext2.getText().toString().equals("")) {
                         Toast.makeText(MainActivity.this, "Error!! the height is empty", Toast.LENGTH_SHORT).show();
+                        edittext1.setText("");
+                        edittext2.setText("");
+                        multdetails.setText("");
+                        editresult.setText("");
 
                     } else if (edittext1.getText().toString().equals("") && edittext2.getText().toString().equals("")) {
                         Toast.makeText(MainActivity.this, "Error!! the length and height is empty", Toast.LENGTH_SHORT).show();
+                        edittext1.setText("");
+                        edittext2.setText("");
+                        multdetails.setText("");
+                        editresult.setText("");
+
+                    } else {
+                        triangle triangle = new triangle(Double.parseDouble(edittext1.getText().toString()), Double.parseDouble(edittext2.getText().toString()));
+
+                        editresult.setText(String.valueOf(triangle.getarea()));
+                        multdetails.setText(triangle.getareadetails());
 
                     }
-                    else{
-                        editresult.setText(String.valueOf(triangle.areaTriangle(Double.parseDouble(edittext1.getText().toString()),Double.parseDouble(edittext2.getText().toString()))));
-                        multdetails.setText( triangle.areadetails(Double.parseDouble(edittext1.getText().toString()),Double.parseDouble(edittext2.getText().toString())));
 
-                    }
+                } else if (radioButton.getText().toString().equals("Perimeter") && spinner.getSelectedItem().equals("Circle")) {
+                    if (edittext1.getText().toString().equals("")) {
+                        edittext1.setText("");
 
-                }
-
-
-                else if (radioButton.getText().toString().equals("Circumference")  && spinner.getSelectedItem().equals("Circle")) {
-                    if(edittext1.getText().toString().equals("")){
+                        multdetails.setText("");
+                        editresult.setText("");
 
                         Toast.makeText(MainActivity.this, "Error!! the radius is empty", Toast.LENGTH_SHORT).show();
-                    }
-                    else{
+                    } else {
+                        circle circle = new circle(Double.parseDouble(edittext1.getText().toString()));
 
-                        editresult.setText(String.valueOf(circle.circumferenceCircle(Double.parseDouble(edittext1.getText().toString()))));
-                        multdetails.setText( circle.circumferencedetails(Double.parseDouble(edittext1.getText().toString())));
+                        editresult.setText(String.valueOf(circle.getperimeter()));
+                        multdetails.setText(circle.getperimeterdetails());
                     }
 
-                }
-                else if(radioButton.getText().toString().equals("Circumference") && spinner.getSelectedItem().equals("Rectangle")) {
-                    if (edittext1.getText().toString().equals("")){
+                } else if (radioButton.getText().toString().equals("Perimeter") && spinner.getSelectedItem().equals("Rectangle")) {
+                    if (edittext1.getText().toString().equals("")) {
                         Toast.makeText(MainActivity.this, "Error!! the length is empty", Toast.LENGTH_SHORT).show();
+                        edittext1.setText("");
+                        edittext2.setText("");
+                        multdetails.setText("");
+                        editresult.setText("");
 
-                    }
-                    else if(edittext2.getText().toString().equals("")){
-                        Toast.makeText(MainActivity.this, "Error!! the weight is empty", Toast.LENGTH_SHORT).show();
+                    } else if (edittext2.getText().toString().equals("")) {
+                        Toast.makeText(MainActivity.this, "Error!! the width is empty", Toast.LENGTH_SHORT).show();
+                        edittext1.setText("");
+                        edittext2.setText("");
+                        multdetails.setText("");
+                        editresult.setText("");
 
                     } else if (edittext1.getText().toString().equals("") && edittext2.getText().toString().equals("")) {
-                        Toast.makeText(MainActivity.this, "Error!! the length and weight is empty", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Error!! the length and width is empty", Toast.LENGTH_SHORT).show();
+                        edittext1.setText("");
+                        edittext2.setText("");
+                        multdetails.setText("");
+                        editresult.setText("");
+
+                    } else {
+                        rectangle rectangle = new rectangle(Double.parseDouble(edittext1.getText().toString()), Double.parseDouble(edittext2.getText().toString()));
+
+                        editresult.setText(String.valueOf(rectangle.getperimeter()));
+                        multdetails.setText(rectangle.getperimeterdetails());
 
                     }
-                    else{
-                        editresult.setText(String.valueOf(rectangle.circumferenceRectangle(Double.parseDouble(edittext1.getText().toString()),Double.parseDouble(edittext2.getText().toString()))));
-                        multdetails.setText( rectangle.circumferencedetails(Double.parseDouble(edittext1.getText().toString()),Double.parseDouble(edittext2.getText().toString())));
-
-                    }
 
 
-                }
-                else if(radioButton.getText().toString().equals("Circumference") && spinner.getSelectedItem().equals("Square")) {
+                } else if (radioButton.getText().toString().equals("Perimeter") && spinner.getSelectedItem().equals("Square")) {
 
-                    if(edittext1.getText().toString().equals("")){
+                    if (edittext1.getText().toString().equals("")) {
 
                         Toast.makeText(MainActivity.this, "Error!! the length is empty", Toast.LENGTH_SHORT).show();
-                    }
-                    else{
+                        edittext1.setText("");
 
-                        editresult.setText(String.valueOf(square.circumferenceSquare(Double.parseDouble(edittext1.getText().toString()))));
-                        multdetails.setText( square.circumferencedetails(Double.parseDouble(edittext1.getText().toString())));
-                    }
-                }
-                else if(radioButton.getText().toString().equals("Circumference") && spinner.getSelectedItem().equals("Triangle")) {
+                        multdetails.setText("");
+                        editresult.setText("");
+                    } else {
+                        square square = new square(Double.parseDouble(edittext1.getText().toString()));
 
-                    if (edittext1.getText().toString().equals("")){
+                        editresult.setText(String.valueOf(square.getperimeter()));
+                        multdetails.setText(square.getperimeterdetails());
+                    }
+                } else if (radioButton.getText().toString().equals("Perimeter") && spinner.getSelectedItem().equals("Triangle")) {
+
+                    if (edittext1.getText().toString().equals("")) {
                         Toast.makeText(MainActivity.this, "Error!! the length is empty", Toast.LENGTH_SHORT).show();
+                        edittext1.setText("");
+                        edittext2.setText("");
+                        edittext3.setText("");
+                        multdetails.setText("");
+                        editresult.setText("");
 
-                    }
-                    else if(edittext2.getText().toString().equals("")){
-                        Toast.makeText(MainActivity.this, "Error!! the weight is empty", Toast.LENGTH_SHORT).show();
+                    } else if (edittext2.getText().toString().equals("")) {
+                        Toast.makeText(MainActivity.this, "Error!! the width is empty", Toast.LENGTH_SHORT).show();
+                        edittext1.setText("");
+                        edittext2.setText("");
+                        edittext3.setText("");
+                        multdetails.setText("");
+                        editresult.setText("");
 
-                    }
-                    else if(edittext3.getText().toString().equals("")){
+                    } else if (edittext3.getText().toString().equals("")) {
                         Toast.makeText(MainActivity.this, "Error!! the height is empty", Toast.LENGTH_SHORT).show();
+                        edittext1.setText("");
+                        edittext2.setText("");
+                        edittext3.setText("");
+                        multdetails.setText("");
+                        editresult.setText("");
 
-                    }
-                    else if (edittext1.getText().toString().equals("") || edittext2.getText().toString().equals("") ||  edittext3.getText().toString().equals("")) {
+                    } else if (edittext1.getText().toString().equals("") || edittext2.getText().toString().equals("") || edittext3.getText().toString().equals("")) {
                         Toast.makeText(MainActivity.this, "Error!! the some field are empty", Toast.LENGTH_SHORT).show();
+                        edittext1.setText("");
+                        edittext2.setText("");
+                        edittext3.setText("");
+                        multdetails.setText("");
+                        editresult.setText("");
 
-                    }
-                    else{
-                        editresult.setText(String.valueOf(triangle.circumferenceTriangle(Double.parseDouble(edittext1.getText().toString()),Double.parseDouble(edittext2.getText().toString()),Double.parseDouble(edittext3.getText().toString()))));
-                        multdetails.setText( triangle.circumferencedetails(Double.parseDouble(edittext1.getText().toString()),Double.parseDouble(edittext2.getText().toString()),Double.parseDouble(edittext3.getText().toString())));
+                    } else {
+                        triangle triangle = new triangle(Double.parseDouble(edittext1.getText().toString()), Double.parseDouble(edittext2.getText().toString()), Double.parseDouble(edittext3.getText().toString()));
+
+                        editresult.setText(String.valueOf(triangle.getperimeter()));
+                        multdetails.setText(triangle.getperimeterdetails());
 
                     }
 

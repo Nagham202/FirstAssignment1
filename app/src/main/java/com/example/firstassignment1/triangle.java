@@ -1,34 +1,53 @@
 package com.example.firstassignment1;
 
-public class triangle {
+public class triangle extends shape {
 
-    private double lenght;
-    private double height;
-    private double weight;
+    private double lenght=0;
+    private double height=0;
+    private double Width=0;
 
     private String details;
 
-    public double areaTriangle(double lenght,double height){
+    public triangle(double lenght, double height, double Width) {
+        this.lenght = lenght;
+        this.height = height;
+        this.Width = Width;
+    }
+    public triangle(double lenght, double height) {
+        this.lenght = lenght;
+        this.height = height;
+    }
+    public triangle() {
+        this.lenght = lenght;
+        this.height = height;
+        this.Width = Width;
+    }
+    @Override
+    public double getarea(){
         double result=0.5*lenght*height;
         return  result;
 
 
     }
-    public String areadetails(double lenght,double height){
+    @Override
+    public String getareadetails(){
 
         return "*) Area of a triangle = 0.5 x lenght x height.\n\n                   = 0.5 x "+lenght+" x "+height+"\n\n                   = "+(0.5*lenght*height)+"\n\n *) measured in units (m^2).";
 
     }
-    public double circumferenceTriangle(double lenght,double weight,double height){
-        double result=lenght+weight+height;
+    @Override
+
+    public double getperimeter(){
+        double result=lenght+Width+height;
         return  result;
 
 
     }
-    public String circumferencedetails(double lenght,double weight,double height){
-        double result=lenght+weight+height;
+    @Override
+    public String getperimeterdetails(){
+        double result=lenght+Width+height;
 
-        return "*) Circumference of a triangle = lenght + weight + height.\n\n                   = "+lenght+" + "+weight+" + "+height+" .\n\n                   = "+result+"\n\n *) measured in units (3m).";
+        return "*) Perimeter of a triangle = lenght + weight + height.\n\n                   = "+lenght+" + "+Width+" + "+height+" .\n\n                   = "+result+"\n\n *) measured in units (3m).";
 
     }
 }

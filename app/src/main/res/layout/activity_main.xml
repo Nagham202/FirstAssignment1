@@ -90,7 +90,7 @@
                         android:layout_height="wrap_content"
                         android:buttonTintMode="src_atop"
                         android:fontFamily="@font/andada"
-                        android:text="Circumference"
+                        android:text="Perimeter"
                         android:textColor="@color/black"
                         android:textSize="20sp"
                         android:textStyle="bold" />

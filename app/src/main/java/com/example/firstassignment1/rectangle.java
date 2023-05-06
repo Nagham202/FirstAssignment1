@@ -1,33 +1,48 @@
 package com.example.firstassignment1;
 
-public class rectangle {
+public class rectangle extends shape {
 
-    private double lenght;
-    private double weight;
+    private double lenght=0;
+    private double width=0;
 
     private String details;
 
-    public double areaRectangle(double lenght,double weight){
-        double result=lenght*weight;
-        return  result;
+    public rectangle(double length, double width) {
+        this.lenght = length;
+        this.width = width;
+    }
+
+    public rectangle() {
+
+    }
+
+    @Override
+    public double getarea() {
+        double result = lenght * width;
+        return result;
+    }
+
+    @Override
+    public String getareadetails() {
+
+        return "*) Area of a rectangle = lenght x weight.\n\n                   = " + lenght + " x " + width + "\n\n                   = " + (lenght * width) + "\n\n *) measured in units (m^2).";
+
+    }
+
+    @Override
+
+    public double getperimeter() {
+        double result = (2 * lenght) + (2 * width);
+        return result;
 
 
     }
-    public String areadetails(double lenght, double weight){
 
-        return "*) Area of a rectangle = lenght x weight.\n\n                   = "+lenght+" x "+weight+"\n\n                   = "+(lenght*weight)+"\n\n *) measured in units (m^2).";
+    @Override
+    public String getperimeterdetails() {
+        double result = (2 * lenght) + (2 * width);
 
-    }
-    public double circumferenceRectangle(double lenght,double weight){
-        double result=(2*lenght)+(2*weight);
-        return  result;
-
-
-    }
-    public String circumferencedetails(double lenght,double weight){
-        double result=(2*lenght)+(2*weight);
-
-        return "*) Circumference of a rectangle = (2 x lenght) + (2 x weight).\n\n                   = ( 2 x "+lenght+" ) + (2 x "+weight+" ).\n\n                   = "+result+"\n\n *) measured in units (2m).";
+        return "*) Perimeter of a rectangle = (2 x lenght) + (2 x weight).\n\n                   = ( 2 x " + lenght + " ) + (2 x " + width + " ).\n\n                   = " + result + "\n\n *) measured in units (2m).";
 
     }
 }

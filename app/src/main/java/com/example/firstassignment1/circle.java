@@ -1,32 +1,42 @@
 package com.example.firstassignment1;
 
-public class circle {
-    private double radius;
+public class circle extends shape{
+    private double radius=0;
 
     public circle() {
 
     }
 
-    public double areaCircle(double radius){
+    public circle(double radius) {
+        this.radius = radius;
+    }
+    @Override
+    public double getarea(){
         double result=(Math.PI)*(Math.pow(radius,2));
         return  result;
 
 
     }
-    public String areadetails(double radius){
 
-        return "*) Area of a circle = PI x radius x radius.\n\n                   = PI x "+radius+" x "+radius+"\n\n                   = "+((Math.PI)*(Math.pow(radius,2)))+"\n\n *) measured in units (m^2).";
-
-    }
-    public double circumferenceCircle(double radius){
+    @Override
+    public double getperimeter(){
         double result=2*(Math.PI)*radius;
         return  result;
 
 
     }
-    public String circumferencedetails(double radius){
 
-        return "*) Circumference of a circle = 2 x PI x radius.\n\n                   = 2 x PI x "+radius+"\n\n                   = "+(2*(Math.PI)*radius)+"\n\n *) measured in units (m).";
+    @Override
+    public String getareadetails() {
+        return "*) Area of a circle = PI x radius x radius.\n\n                   = PI x "+radius+" x "+radius+"\n\n                   = "+((Math.PI)*(Math.pow(radius,2)))+"\n\n *) measured in units (m^2).";
+    }
+
+
+    @Override
+    public String getperimeterdetails(){
+
+        return "*) Perimeter of a circle = 2 x PI x radius.\n\n                   = 2 x PI x "+radius+"\n\n                   = "+(2*(Math.PI)*radius)+"\n\n *) measured in units (m).";
 
     }
+
 }

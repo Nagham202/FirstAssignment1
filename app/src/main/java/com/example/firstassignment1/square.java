@@ -1,29 +1,41 @@
 package com.example.firstassignment1;
 
-public class square {
-    private double lenght;
+public class square  extends shape{
+    private double lenght=0;
     private String details;
 
-    public double areaSquare(double lenght){
+    public square(double lenght) {
+        this.lenght = lenght;
+    }
+    public square() {
+    }
+    @Override
+    public double getarea(){
         double result=lenght*lenght;
         return  result;
 
 
     }
-    public String areadetails(double lenght){
+    @Override
+
+    public String getareadetails(){
 
         return "*) Area of a square = lenght x lenght.\n\n                   = "+lenght+" x "+lenght+"\n\n                   = "+(lenght*lenght)+"\n\n *) measured in units (m^2).";
 
     }
-    public double circumferenceSquare(double lenght){
+    @Override
+
+    public double getperimeter(){
         double result=4*lenght;
         return  result;
 
 
     }
-    public String circumferencedetails(double lenght){
+    @Override
 
-        return "*) Circumference of a square = 4 x lenght.\n\n                   = 4 x "+lenght+"\n\n                   = "+(4*lenght)+"\n\n *) measured in units (m).";
+    public String getperimeterdetails(){
+
+        return "*) Perimeter of a square = 4 x lenght.\n\n                   = 4 x "+lenght+"\n\n                   = "+(4*lenght)+"\n\n *) measured in units (m).";
 
     }
 
