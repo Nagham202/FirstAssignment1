@@ -158,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
                     linearShow.setVisibility(View.VISIBLE);
                     multdetails.requestFocus();
                     multdetails.setFocusable(View.NOT_FOCUSABLE);
-                    text.setText("Circumference of a circle");
+                    text.setText("Perimeter of a circle");
                     text1.setText("Radius");
                     edittext1.setHint("Enter the radius :");
                     text2.setVisibility(View.GONE);
@@ -171,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
                     linearShow.setVisibility(View.VISIBLE);
                     multdetails.requestFocus();
                     multdetails.setFocusable(View.NOT_FOCUSABLE);
-                    text.setText("Circumference of a rectangle");
+                    text.setText("Perimeter of a rectangle");
                     text1.setText("Length");
                     edittext1.setHint("Enter the length :");
                     text2.setVisibility(View.VISIBLE);
