@@ -20,7 +20,7 @@ public class square  extends shape{
 
     public String getareadetails(){
 
-        return "*) Area of a square = lenght x lenght.\n\n                   = "+lenght+" x "+lenght+"\n\n                   = "+(lenght*lenght)+"\n\n *) measured in units (m^2).";
+        return "*) Area of a square = \nlenght x lenght.\n\n  = "+lenght+" x "+lenght+"\n\n  = "+(lenght*lenght)+"\n\n *) measured in units (m^2).";
 
     }
     @Override
@@ -35,7 +35,7 @@ public class square  extends shape{
 
     public String getperimeterdetails(){
 
-        return "*) Perimeter of a square = 4 x lenght.\n\n                   = 4 x "+lenght+"\n\n                   = "+(4*lenght)+"\n\n *) measured in units (m).";
+        return "*) Perimeter of a square = \n4 x lenght.\n\n  = 4 x "+lenght+"\n\n  = "+(4*lenght)+"\n\n *) measured in units (m).";
 
     }
 

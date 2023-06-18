@@ -32,7 +32,7 @@ public class triangle extends shape {
     @Override
     public String getareadetails(){
 
-        return "*) Area of a triangle = 0.5 x lenght x height.\n\n                   = 0.5 x "+lenght+" x "+height+"\n\n                   = "+(0.5*lenght*height)+"\n\n *) measured in units (m^2).";
+        return "*) Area of a triangle = \n0.5 x lenght x height.\n\n  = 0.5 x "+lenght+" x "+height+"\n\n  = "+(0.5*lenght*height)+"\n\n *) measured in units (m^2).";
 
     }
     @Override
@@ -47,7 +47,7 @@ public class triangle extends shape {
     public String getperimeterdetails(){
         double result=lenght+Width+height;
 
-        return "*) Perimeter of a triangle = lenght + weight + height.\n\n                   = "+lenght+" + "+Width+" + "+height+" .\n\n                   = "+result+"\n\n *) measured in units (3m).";
+        return "*) Perimeter of a triangle = \nlenght + weight + height.\n\n  = "+lenght+" + "+Width+" + "+height+" .\n\n  = "+result+"\n\n *) measured in units (3m).";
 
     }
 }

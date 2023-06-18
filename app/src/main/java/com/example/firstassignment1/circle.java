@@ -28,14 +28,14 @@ public class circle extends shape{
 
     @Override
     public String getareadetails() {
-        return "*) Area of a circle = PI x radius x radius.\n\n                   = PI x "+radius+" x "+radius+"\n\n                   = "+((Math.PI)*(Math.pow(radius,2)))+"\n\n *) measured in units (m^2).";
+        return "*) Area of a circle = \nPI x radius x radius.\n\n  = PI x "+radius+" x "+radius+"\n\n  = "+((Math.PI)*(Math.pow(radius,2)))+"\n\n *) measured in units (m^2).";
     }
 
 
     @Override
     public String getperimeterdetails(){
 
-        return "*) Perimeter of a circle = 2 x PI x radius.\n\n                   = 2 x PI x "+radius+"\n\n                   = "+(2*(Math.PI)*radius)+"\n\n *) measured in units (m).";
+        return "*) Perimeter of a circle = \n2 x PI x radius.\n\n  = 2 x PI x "+radius+"\n\n  = "+(2*(Math.PI)*radius)+"\n\n *) measured in units (m).";
 
     }
 

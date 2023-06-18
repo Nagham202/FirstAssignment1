@@ -25,7 +25,7 @@ public class rectangle extends shape {
     @Override
     public String getareadetails() {
 
-        return "*) Area of a rectangle = lenght x weight.\n\n                   = " + lenght + " x " + width + "\n\n                   = " + (lenght * width) + "\n\n *) measured in units (m^2).";
+        return "*) Area of a rectangle = \nlenght x weight.\n\n  = " + lenght + " x " + width + "\n\n  = " + (lenght * width) + "\n\n *) measured in units (m^2).";
 
     }
 
@@ -42,7 +42,7 @@ public class rectangle extends shape {
     public String getperimeterdetails() {
         double result = (2 * lenght) + (2 * width);
 
-        return "*) Perimeter of a rectangle = (2 x lenght) + (2 x weight).\n\n                   = ( 2 x " + lenght + " ) + (2 x " + width + " ).\n\n                   = " + result + "\n\n *) measured in units (2m).";
+        return "*) Perimeter of a rectangle = \n(2 x lenght) + (2 x weight).\n\n  = ( 2 x " + lenght + " ) + (2 x " + width + " ).\n\n  = " + result + "\n\n *) measured in units (2m).";
 
     }
 }
