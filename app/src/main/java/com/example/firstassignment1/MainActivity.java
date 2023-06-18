@@ -1,7 +1,11 @@
 package com.example.firstassignment1;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -14,6 +18,12 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     Spinner spinner;
@@ -33,7 +43,8 @@ public class MainActivity extends AppCompatActivity {
     EditText editresult;
     EditText multdetails;
     RadioButton radioButton;
-
+    ArrayList<print> arrayList=new ArrayList<>();
+    RecyclerView recycler ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +64,37 @@ public class MainActivity extends AppCompatActivity {
         editresult = findViewById(R.id.editresult);
         calculate = findViewById(R.id.calculate);
         multdetails = findViewById(R.id.multidetails);
+        RecyclerView recycler = findViewById(R.id.recycler);
+        loadData();
+//
+        if(arrayList==null) {
+            arrayList = new ArrayList<>();
+            print p = new print();
+
+            System.out.println(arrayList.size());
+            String[] captions = new String[1];
+            String[] results = new String[1];
+            captions[0] = p.getName();
+            results[0] = p.getResult();
+            recycler.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+            CaptionedImagesAdapter adapter1 = new CaptionedImagesAdapter(captions, results);
+            recycler.setAdapter(adapter1);
+        }
+        else {
+
+            String[] captions = new String[arrayList.size()];
+            String[] results = new String[arrayList.size()];
+
+
+            for(int i = 0; i<captions.length;i++){
+                captions[i] = arrayList.get(i).getName();
+                results[i] = arrayList.get(i).getResult();
+
+            }
+            recycler.setLayoutManager(new LinearLayoutManager(this));
+            CaptionedImagesAdapter adapter1 = new CaptionedImagesAdapter(captions,results);
+            recycler.setAdapter(adapter1);
+        }
 
 
         String[] types = {"Circle", "Rectangle", "Square", "Triangle"};
@@ -249,6 +291,19 @@ public class MainActivity extends AppCompatActivity {
 
                         editresult.setText(String.valueOf(circle.getarea()));
                         multdetails.setText(circle.getareadetails());
+                        saveData(spinner.getSelectedItem()+" of "+radioButton.getText().toString(),multdetails.getText().toString());
+                        String[] captions = new String[arrayList.size()];
+                        String[] results = new String[arrayList.size()];
+
+
+                        for(int i = 0; i<captions.length;i++){
+                            captions[i] = arrayList.get(i).getName();
+                            results[i] = arrayList.get(i).getResult();
+
+                        }
+                        CaptionedImagesAdapter adapter1 = new CaptionedImagesAdapter(captions,results);
+                        recycler.setAdapter(adapter1);
+                        Toast.makeText(MainActivity.this, "The data is saved in Data List.", Toast.LENGTH_SHORT).show();
                     }
                 } else if (radioButton.getText().toString().equals("Area") && spinner.getSelectedItem().equals("Rectangle")) {
                     if (edittext1.getText().toString().equals("")) {
@@ -277,6 +332,19 @@ public class MainActivity extends AppCompatActivity {
 
                         editresult.setText(String.valueOf(rectangle.getarea()));
                         multdetails.setText(rectangle.getareadetails());
+                        saveData(spinner.getSelectedItem()+" of "+radioButton.getText().toString(),multdetails.getText().toString());
+                        String[] captions = new String[arrayList.size()];
+                        String[] results = new String[arrayList.size()];
+
+
+                        for(int i = 0; i<captions.length;i++){
+                            captions[i] = arrayList.get(i).getName();
+                            results[i] = arrayList.get(i).getResult();
+
+                        }
+                        CaptionedImagesAdapter adapter1 = new CaptionedImagesAdapter(captions,results);
+                        recycler.setAdapter(adapter1);
+                        Toast.makeText(MainActivity.this, "The data is saved in Data List.", Toast.LENGTH_SHORT).show();
 
                     }
 
@@ -295,6 +363,19 @@ public class MainActivity extends AppCompatActivity {
 
                         editresult.setText(String.valueOf(square.getarea()));
                         multdetails.setText(square.getareadetails());
+                        saveData(spinner.getSelectedItem()+" of "+radioButton.getText().toString(),multdetails.getText().toString());
+                        String[] captions = new String[arrayList.size()];
+                        String[] results = new String[arrayList.size()];
+
+
+                        for(int i = 0; i<captions.length;i++){
+                            captions[i] = arrayList.get(i).getName();
+                            results[i] = arrayList.get(i).getResult();
+
+                        }
+                        CaptionedImagesAdapter adapter1 = new CaptionedImagesAdapter(captions,results);
+                        recycler.setAdapter(adapter1);
+                        Toast.makeText(MainActivity.this, "The data is saved in Data List.", Toast.LENGTH_SHORT).show();
                     }
                 } else if (radioButton.getText().toString().equals("Area") && spinner.getSelectedItem().equals("Triangle")) {
 
@@ -324,6 +405,19 @@ public class MainActivity extends AppCompatActivity {
 
                         editresult.setText(String.valueOf(triangle.getarea()));
                         multdetails.setText(triangle.getareadetails());
+                        saveData(spinner.getSelectedItem()+" of "+radioButton.getText().toString(),multdetails.getText().toString());
+                        String[] captions = new String[arrayList.size()];
+                        String[] results = new String[arrayList.size()];
+
+
+                        for(int i = 0; i<captions.length;i++){
+                            captions[i] = arrayList.get(i).getName();
+                            results[i] = arrayList.get(i).getResult();
+
+                        }
+                        CaptionedImagesAdapter adapter1 = new CaptionedImagesAdapter(captions,results);
+                        recycler.setAdapter(adapter1);
+                        Toast.makeText(MainActivity.this, "The data is saved in Data List.", Toast.LENGTH_SHORT).show();
 
                     }
 
@@ -340,6 +434,19 @@ public class MainActivity extends AppCompatActivity {
 
                         editresult.setText(String.valueOf(circle.getperimeter()));
                         multdetails.setText(circle.getperimeterdetails());
+                        saveData(spinner.getSelectedItem()+" of "+radioButton.getText().toString(),multdetails.getText().toString());
+                        String[] captions = new String[arrayList.size()];
+                        String[] results = new String[arrayList.size()];
+
+
+                        for(int i = 0; i<captions.length;i++){
+                            captions[i] = arrayList.get(i).getName();
+                            results[i] = arrayList.get(i).getResult();
+
+                        }
+                        CaptionedImagesAdapter adapter1 = new CaptionedImagesAdapter(captions,results);
+                        recycler.setAdapter(adapter1);
+                        Toast.makeText(MainActivity.this, "The data is saved in Data List.", Toast.LENGTH_SHORT).show();
                     }
 
                 } else if (radioButton.getText().toString().equals("Perimeter") && spinner.getSelectedItem().equals("Rectangle")) {
@@ -369,7 +476,19 @@ public class MainActivity extends AppCompatActivity {
 
                         editresult.setText(String.valueOf(rectangle.getperimeter()));
                         multdetails.setText(rectangle.getperimeterdetails());
+                        saveData(spinner.getSelectedItem()+" of "+radioButton.getText().toString(),multdetails.getText().toString());
+                        String[] captions = new String[arrayList.size()];
+                        String[] results = new String[arrayList.size()];
 
+
+                        for(int i = 0; i<captions.length;i++){
+                            captions[i] = arrayList.get(i).getName();
+                            results[i] = arrayList.get(i).getResult();
+
+                        }
+                        CaptionedImagesAdapter adapter1 = new CaptionedImagesAdapter(captions,results);
+                        recycler.setAdapter(adapter1);
+                        Toast.makeText(MainActivity.this, "The data is saved in Data List.", Toast.LENGTH_SHORT).show();
                     }
 
 
@@ -387,6 +506,19 @@ public class MainActivity extends AppCompatActivity {
 
                         editresult.setText(String.valueOf(square.getperimeter()));
                         multdetails.setText(square.getperimeterdetails());
+                        saveData(spinner.getSelectedItem()+" of "+radioButton.getText().toString(),multdetails.getText().toString());
+                        String[] captions = new String[arrayList.size()];
+                        String[] results = new String[arrayList.size()];
+
+
+                        for(int i = 0; i<captions.length;i++){
+                            captions[i] = arrayList.get(i).getName();
+                            results[i] = arrayList.get(i).getResult();
+
+                        }
+                        CaptionedImagesAdapter adapter1 = new CaptionedImagesAdapter(captions,results);
+                        recycler.setAdapter(adapter1);
+                        Toast.makeText(MainActivity.this, "The data is saved in Data List.", Toast.LENGTH_SHORT).show();
                     }
                 } else if (radioButton.getText().toString().equals("Perimeter") && spinner.getSelectedItem().equals("Triangle")) {
 
@@ -427,12 +559,44 @@ public class MainActivity extends AppCompatActivity {
 
                         editresult.setText(String.valueOf(triangle.getperimeter()));
                         multdetails.setText(triangle.getperimeterdetails());
+                        saveData(spinner.getSelectedItem()+" of "+radioButton.getText().toString(),multdetails.getText().toString());
+                        String[] captions = new String[arrayList.size()];
+                        String[] results = new String[arrayList.size()];
 
+
+                        for(int i = 0; i<captions.length;i++){
+                            captions[i] = arrayList.get(i).getName();
+                            results[i] = arrayList.get(i).getResult();
+
+                        }
+                        CaptionedImagesAdapter adapter1 = new CaptionedImagesAdapter(captions,results);
+                        recycler.setAdapter(adapter1);
+                        Toast.makeText(MainActivity.this, "The data is saved in Data List.", Toast.LENGTH_SHORT).show();
                     }
 
                 }
 
             }
         });
+    }
+    private void loadData() {
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("DATASs", MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = pref.getString("DataSets", null);
+        Type type = new TypeToken<ArrayList<print>>() {
+        }.getType();
+
+        arrayList = gson.fromJson(json, type);
+    }
+    private void saveData(String name, String result) {
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("DATASs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        Gson gson = new Gson();
+        arrayList.add(new print(name, result));
+        String json = gson.toJson(arrayList);
+        editor.putString("DataSets", json);
+        editor.apply();
+        loadData();
+
     }
 }
